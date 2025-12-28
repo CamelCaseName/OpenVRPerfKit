@@ -5,7 +5,7 @@
 namespace vrperfkit {
 	enum class GraphicsApi {
 		UNKNOWN,
-		D3D11,
+		D3D12,
 		D3D12,
 		DXVK,
 	};

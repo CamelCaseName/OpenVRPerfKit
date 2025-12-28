@@ -5,9 +5,9 @@
 #include "openvr_hooks.h"
 #include "resolution_scaling.h"
 
-#include "d3d11/d3d11_helper.h"
-#include "d3d11/d3d11_post_processor.h"
-#include "d3d11/d3d11_variable_rate_shading.h"
+#include "d3d12/d3d12_helper.h"
+#include "d3d12/d3d12_post_processor.h"
+#include "d3d12/d3d12_variable_rate_shading.h"
 
 #include "dxgi/dxgi_interfaces.h"
 
@@ -54,34 +54,34 @@ namespace vrperfkit {
 		}
 	}
 
-	struct OpenVrD3D11Resources {
-		std::unique_ptr<D3D11PostProcessor> postProcessor;
-		std::unique_ptr<D3D11VariableRateShading> variableRateShading;
-		std::unique_ptr<D3D11Injector> injector;
-		ComPtr<ID3D11Device> device;
-		ComPtr<ID3D11DeviceContext> context;
-		ComPtr<ID3D11Texture2D> resolveTexture;
-		ComPtr<ID3D11ShaderResourceView> resolveView;
-		ComPtr<ID3D11Texture2D> outputTexture;
-		ComPtr<ID3D11ShaderResourceView> outputView;
-		ComPtr<ID3D11UnorderedAccessView> outputUav;
+	struct OpenVrD3D12Resources {
+		std::unique_ptr<D3D12PostProcessor> postProcessor;
+		std::unique_ptr<D3D12VariableRateShading> variableRateShading;
+		std::unique_ptr<D3D12Injector> injector;
+		ComPtr<ID3D12Device> device;
+		ComPtr<ID3D12DeviceContext> context;
+		ComPtr<ID3D12Resource> resolveTexture;
+		ComPtr<ID3D12ShaderResourceView> resolveView;
+		ComPtr<ID3D12Resource> outputTexture;
+		ComPtr<ID3D12ShaderResourceView> outputView;
+		ComPtr<ID3D12UnorderedAccessView> outputUav;
 		bool requiresResolve;
 		bool usingArrayTex;
 
 		struct EyeViews {
-			ComPtr<ID3D11ShaderResourceView> view[2];
+			ComPtr<ID3D12ShaderResourceView> view[2];
 		};
-		std::unordered_map<ID3D11Texture2D*, EyeViews> inputViews;
+		std::unordered_map<ID3D12Resource*, EyeViews> inputViews;
 
-		ID3D11ShaderResourceView *GetInputView(ID3D11Texture2D *inputTexture, int eye) {
-			D3D11_TEXTURE2D_DESC td;
+		ID3D12ShaderResourceView *GetInputView(ID3D12Resource *inputTexture, int eye) {
+			D3D12_TEXTURE2D_DESC td;
 			inputTexture->GetDesc(&td);
 
 			if (requiresResolve) {
 				if (td.SampleDesc.Count > 1) {
 					context->ResolveSubresource(resolveTexture.Get(), 0, inputTexture, 0, td.Format);
 				} else {
-					D3D11_BOX region;
+					D3D12_BOX region;
 					region.left = region.top = region.front = 0;
 					region.right = td.Width;
 					region.bottom = td.Height;
@@ -116,7 +116,7 @@ namespace vrperfkit {
 	};
 
 	void OpenVrManager::Shutdown() {
-		d3d11Res.reset();
+		d3d12Res.reset();
 		initialized = false;
 		failed = false;
 		graphicsApi = GraphicsApi::UNKNOWN;
@@ -140,8 +140,8 @@ namespace vrperfkit {
 				return;
 			}
 
-			if (graphicsApi == GraphicsApi::D3D11) {
-				PostProcessD3D11(info);
+			if (graphicsApi == GraphicsApi::D3D12) {
+				PostProcessD3D12(info);
 			}
 
 			if (graphicsApi == GraphicsApi::DXVK) {
@@ -225,13 +225,13 @@ namespace vrperfkit {
 
 	void OpenVrManager::EnsureInit(const OpenVrSubmitInfo &info) {
 		if (info.texture->eType == TextureType_DirectX) {
-			ID3D11Texture2D *d3d11Tex = (ID3D11Texture2D*)info.texture->handle;
-			ComPtr<ID3D11Device> device;
-			d3d11Tex->GetDevice(device.GetAddressOf());
+			ID3D12Resource *d3d12Tex = (ID3D12Resource*)info.texture->handle;
+			ComPtr<ID3D12Device> device;
+			d3d12Tex->GetDevice(device.GetAddressOf());
 
 			// check if this texture is actually a Vulkan dxvk texture...
 			ComPtr<IDXGIVkInteropSurface> dxvkSurface;
-			if (d3d11Tex->QueryInterface(IID_PPV_ARGS(dxvkSurface.GetAddressOf())) == S_OK) {
+			if (d3d12Tex->QueryInterface(IID_PPV_ARGS(dxvkSurface.GetAddressOf())) == S_OK) {
 				if (!initialized) {
 					Shutdown();
 					InitDxvk(info);
@@ -247,15 +247,15 @@ namespace vrperfkit {
 				return;
 			}
 
-			D3D11_TEXTURE2D_DESC td;
-			d3d11Tex->GetDesc(&td);
+			D3D12_TEXTURE2D_DESC td;
+			d3d12Tex->GetDesc(&td);
 
-			if (!initialized || graphicsApi != GraphicsApi::D3D11
+			if (!initialized || graphicsApi != GraphicsApi::D3D12
 					|| td.Width > textureWidth || td.Width < textureWidth - 10
 					|| td.Height > textureHeight || td.Height < textureHeight - 10
-					|| d3d11Res->usingArrayTex != td.ArraySize > 1) {
+					|| d3d12Res->usingArrayTex != td.ArraySize > 1) {
 				Shutdown();
-				InitD3D11(info);
+				InitD3D12(info);
 			}
 		}
 
@@ -265,57 +265,57 @@ namespace vrperfkit {
 		}
 	}
 
-	void OpenVrManager::InitD3D11(const OpenVrSubmitInfo &info) {
-		LOG_INFO << "Game is submitting D3D11 textures, creating necessary output resources...";
+	void OpenVrManager::InitD3D12(const OpenVrSubmitInfo &info) {
+		LOG_INFO << "Game is submitting D3D12 textures, creating necessary output resources...";
 
-		d3d11Res.reset(new OpenVrD3D11Resources);
-		ID3D11Texture2D *tex = (ID3D11Texture2D*)info.texture->handle;
-		D3D11_TEXTURE2D_DESC td;
+		d3d12Res.reset(new OpenVrD3D12Resources);
+		ID3D12Resource *tex = (ID3D12Resource*)info.texture->handle;
+		D3D12_TEXTURE2D_DESC td;
 		tex->GetDesc(&td);
-		tex->GetDevice(d3d11Res->device.GetAddressOf());
-		d3d11Res->device->GetImmediateContext(d3d11Res->context.GetAddressOf());
-		d3d11Res->variableRateShading.reset(new D3D11VariableRateShading(d3d11Res->device));
-		d3d11Res->postProcessor.reset(new D3D11PostProcessor(d3d11Res->device));
+		tex->GetDevice(d3d12Res->device.GetAddressOf());
+		d3d12Res->device->GetImmediateContext(d3d12Res->context.GetAddressOf());
+		d3d12Res->variableRateShading.reset(new D3D12VariableRateShading(d3d12Res->device));
+		d3d12Res->postProcessor.reset(new D3D12PostProcessor(d3d12Res->device));
 		
-		d3d11Res->injector.reset(new D3D11Injector(d3d11Res->device));
-		d3d11Res->injector->AddListener(d3d11Res->postProcessor.get());
-		d3d11Res->injector->AddListener(d3d11Res->variableRateShading.get());
+		d3d12Res->injector.reset(new D3D12Injector(d3d12Res->device));
+		d3d12Res->injector->AddListener(d3d12Res->postProcessor.get());
+		d3d12Res->injector->AddListener(d3d12Res->variableRateShading.get());
 
-		graphicsApi = GraphicsApi::D3D11;
+		graphicsApi = GraphicsApi::D3D12;
 		textureWidth = td.Width;
 		textureHeight = td.Height;
-		d3d11Res->usingArrayTex = td.ArraySize > 1;
-		d3d11Res->requiresResolve = td.SampleDesc.Count > 1 || !(td.BindFlags & D3D11_BIND_SHADER_RESOURCE) || IsSrgbFormat(td.Format);
+		d3d12Res->usingArrayTex = td.ArraySize > 1;
+		d3d12Res->requiresResolve = td.SampleDesc.Count > 1 || !(td.BindFlags & D3D12_BIND_SHADER_RESOURCE) || IsSrgbFormat(td.Format);
 
-		if (d3d11Res->requiresResolve) {
+		if (d3d12Res->requiresResolve) {
 			LOG_INFO << "Input texture can't be bound directly, need to resolve";
-			d3d11Res->resolveTexture = CreateResolveTexture(d3d11Res->device.Get(), tex, MakeSrgbFormatsTypeless(td.Format));
-			d3d11Res->resolveView = CreateShaderResourceView(d3d11Res->device.Get(), d3d11Res->resolveTexture.Get());
+			d3d12Res->resolveTexture = CreateResolveTexture(d3d12Res->device.Get(), tex, MakeSrgbFormatsTypeless(td.Format));
+			d3d12Res->resolveView = CreateShaderResourceView(d3d12Res->device.Get(), d3d12Res->resolveTexture.Get());
 		}
 
 		uint32_t outputWidth = td.Width, outputHeight = td.Height;
 		AdjustOutputResolution(outputWidth, outputHeight);
-		d3d11Res->outputTexture = CreatePostProcessTexture(d3d11Res->device.Get(), outputWidth, outputHeight, DetermineOutputFormat(td.Format));
-		d3d11Res->outputView = CreateShaderResourceView(d3d11Res->device.Get(), d3d11Res->outputTexture.Get());
-		d3d11Res->outputUav = CreateUnorderedAccessView(d3d11Res->device.Get(), d3d11Res->outputTexture.Get());
+		d3d12Res->outputTexture = CreatePostProcessTexture(d3d12Res->device.Get(), outputWidth, outputHeight, DetermineOutputFormat(td.Format));
+		d3d12Res->outputView = CreateShaderResourceView(d3d12Res->device.Get(), d3d12Res->outputTexture.Get());
+		d3d12Res->outputUav = CreateUnorderedAccessView(d3d12Res->device.Get(), d3d12Res->outputTexture.Get());
 
 		CalculateProjectionCenters();
 		CalculateEyeTextureAspectRatio();
 
-		d3d11Res->postProcessor.get()->SetProjCenters(projCenters.eyeCenter[0].x, projCenters.eyeCenter[0].y, projCenters.eyeCenter[1].x, projCenters.eyeCenter[1].y);
+		d3d12Res->postProcessor.get()->SetProjCenters(projCenters.eyeCenter[0].x, projCenters.eyeCenter[0].y, projCenters.eyeCenter[1].x, projCenters.eyeCenter[1].y);
 
 		initialized = true;
 	}
 
 	void OpenVrManager::InitDxvk(const OpenVrSubmitInfo &info) {
-		LOG_INFO << "DXVK is active as a D3D11 -> Vulkan wrapper!";
+		LOG_INFO << "DXVK is active as a D3D12 -> Vulkan wrapper!";
 		LOG_INFO << "Mod features are currently not supported on Vulkan output...";
 		LOG_INFO << "But we will make sure that the Vulkan output is actually displayed in the HMD :)";
 		dxvkRes.reset(new OpenVrDxvkResources);
 
-		ID3D11Texture2D *d3d11Tex = (ID3D11Texture2D*)info.texture->handle;
+		ID3D12Resource *d3d12Tex = (ID3D12Resource*)info.texture->handle;
 		ComPtr<IDXGIVkInteropSurface> dxvkSurface;
-		d3d11Tex->QueryInterface(IID_PPV_ARGS(dxvkSurface.GetAddressOf()));
+		d3d12Tex->QueryInterface(IID_PPV_ARGS(dxvkSurface.GetAddressOf()));
 		ComPtr<IDXGIVkInteropDevice> dxvkDevice;
 		dxvkSurface->GetDevice(dxvkDevice.GetAddressOf());
 		VkInstance instance;
@@ -376,11 +376,11 @@ namespace vrperfkit {
 		aspectRatio = float(width) / height;
 	}
 
-	void OpenVrManager::PostProcessD3D11(OpenVrSubmitInfo &info) {
-		ID3D11Texture2D *inputTexture = reinterpret_cast<ID3D11Texture2D *>(info.texture->handle);
-		D3D11_TEXTURE2D_DESC itd, otd;
+	void OpenVrManager::PostProcessD3D12(OpenVrSubmitInfo &info) {
+		ID3D12Resource *inputTexture = reinterpret_cast<ID3D12Resource *>(info.texture->handle);
+		D3D12_TEXTURE2D_DESC itd, otd;
 		inputTexture->GetDesc(&itd);
-		d3d11Res->outputTexture->GetDesc(&otd);
+		d3d12Res->outputTexture->GetDesc(&otd);
 
 		bool isFlippedX = info.bounds->uMin > info.bounds->uMax;
 		bool isFlippedY = info.bounds->vMin > info.bounds->vMax;
@@ -388,19 +388,19 @@ namespace vrperfkit {
 		bool inputIsSrgb = info.texture->eColorSpace == ColorSpace_Gamma || (info.texture->eColorSpace == ColorSpace_Auto && IsConsideredSrgbByOpenVR(itd.Format));
 		bool isCombinedTex = float(itd.Width) / itd.Height >= 1.5f * aspectRatio && std::abs(info.bounds->uMax - info.bounds->uMin) <= 0.5f;
 
-		D3D11PostProcessInput input;
+		D3D12PostProcessInput input;
 		input.eye = info.eye;
 		input.inputTexture = inputTexture;
-		input.inputView = d3d11Res->GetInputView(inputTexture, info.eye);
+		input.inputView = d3d12Res->GetInputView(inputTexture, info.eye);
 		input.inputViewport.x = std::roundf(itd.Width * min(info.bounds->uMin, info.bounds->uMax));
 		input.inputViewport.y = std::roundf(itd.Height * min(info.bounds->vMin, info.bounds->vMax));
 		input.inputViewport.width = std::roundf(itd.Width * std::abs(info.bounds->uMax - info.bounds->uMin));
 		input.inputViewport.height = std::roundf(itd.Height * std::abs(info.bounds->vMax - info.bounds->vMin));
-		input.outputTexture = d3d11Res->outputTexture.Get();
-		input.outputView = d3d11Res->outputView.Get();
-		input.outputUav = d3d11Res->outputUav.Get();
+		input.outputTexture = d3d12Res->outputTexture.Get();
+		input.outputView = d3d12Res->outputView.Get();
+		input.outputUav = d3d12Res->outputUav.Get();
 		input.projectionCenter = projCenters.eyeCenter[info.eye];
-		input.mode = d3d11Res->usingArrayTex ? TextureMode::ARRAY : (isCombinedTex ? TextureMode::COMBINED : TextureMode::SINGLE);
+		input.mode = d3d12Res->usingArrayTex ? TextureMode::ARRAY : (isCombinedTex ? TextureMode::COMBINED : TextureMode::SINGLE);
 
 		if (isFlippedX) {
 			input.projectionCenter.x = 1.f - input.projectionCenter.x;
@@ -410,7 +410,7 @@ namespace vrperfkit {
 		}
 
 		Viewport outputViewport;
-		if (d3d11Res->postProcessor->Apply(input, outputViewport)) {
+		if (d3d12Res->postProcessor->Apply(input, outputViewport)) {
 			outputBounds.uMin = float(outputViewport.x) / otd.Width;
 			outputBounds.vMin = float(outputViewport.y) / otd.Height;
 			outputBounds.uMax = float(outputViewport.width + outputViewport.x) / otd.Width;
@@ -425,7 +425,7 @@ namespace vrperfkit {
 
 			PrepareOutputTexInfo(info.texture, info.submitFlags);
 			
-			outputTexInfo->handle = d3d11Res->outputTexture.Get();
+			outputTexInfo->handle = d3d12Res->outputTexture.Get();
 			outputTexInfo->eColorSpace = inputIsSrgb ? ColorSpace_Gamma : ColorSpace_Auto;
 			info.texture = outputTexInfo.get();
 		}
@@ -434,16 +434,16 @@ namespace vrperfkit {
 		float projLY = isFlippedY ? 1.f - projCenters.eyeCenter[0].y : projCenters.eyeCenter[0].y;
 		float projRX = isFlippedX ? 1.f - projCenters.eyeCenter[1].x : projCenters.eyeCenter[1].x;
 		float projRY = isFlippedY ? 1.f - projCenters.eyeCenter[1].y : projCenters.eyeCenter[1].y;
-		d3d11Res->variableRateShading->UpdateTargetInformation(itd.Width, itd.Height, input.mode, projLX, projLY, projRX, projRY);
-		d3d11Res->variableRateShading->EndFrame();
+		d3d12Res->variableRateShading->UpdateTargetInformation(itd.Width, itd.Height, input.mode, projLX, projLY, projRX, projRY);
+		d3d12Res->variableRateShading->EndFrame();
 	}
 
 	void OpenVrManager::PatchDxvkSubmit(OpenVrSubmitInfo &info) {
 		PrepareOutputTexInfo(info.texture, info.submitFlags);
 
-		ID3D11Texture2D *d3d11Tex = (ID3D11Texture2D*)info.texture->handle;
+		ID3D12Resource *d3d12Tex = (ID3D12Resource*)info.texture->handle;
 
-		d3d11Tex->QueryInterface(IID_PPV_ARGS(dxvkRes->dxvkSurface.ReleaseAndGetAddressOf()));
+		d3d12Tex->QueryInterface(IID_PPV_ARGS(dxvkRes->dxvkSurface.ReleaseAndGetAddressOf()));
 		dxvkRes->dxvkSurface->GetDevice(dxvkRes->dxvkDevice.ReleaseAndGetAddressOf());
 
 		VkImage image;

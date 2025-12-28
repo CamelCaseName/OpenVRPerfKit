@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9B971E0C-9BFD-3037-A5BB-57E769A30116}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Lenny\source\repos\OpenVRPerfKit\src;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\minhook\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\yaml-cpp\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\LibOVR\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\openvr\headers;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\Vulkan-Headers\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\dxvk\src;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\nvapi;F:\Lenny\source\repos\OpenVRPerfKit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Lenny\source\repos\OpenVRPerfKit\src;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\minhook\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\yaml-cpp\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\LibOVR\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\openvr\headers;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\Vulkan-Headers\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\dxvk\src;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\nvapi;F:\Lenny\source\repos\OpenVRPerfKit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Lenny\source\repos\OpenVRPerfKit\src;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\minhook\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\yaml-cpp\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\LibOVR\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\openvr\headers;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\Vulkan-Headers\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\dxvk\src;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\nvapi;F:\Lenny\source\repos\OpenVRPerfKit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Lenny\source\repos\OpenVRPerfKit\src;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\minhook\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\yaml-cpp\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\LibOVR\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\openvr\headers;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\Vulkan-Headers\include;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\dxvk\src;F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\nvapi;F:\Lenny\source\repos\OpenVRPerfKit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Lenny\source\repos\OpenVRPerfKit\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule F:/Lenny/source/repos/OpenVRPerfKit/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SF:/Lenny/source/repos/OpenVRPerfKit -BF:/Lenny/source/repos/OpenVRPerfKit --check-stamp-file F:/Lenny/source/repos/OpenVRPerfKit/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCXXInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeCCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeCXXCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeRCCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeSystem.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule F:/Lenny/source/repos/OpenVRPerfKit/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SF:/Lenny/source/repos/OpenVRPerfKit -BF:/Lenny/source/repos/OpenVRPerfKit --check-stamp-file F:/Lenny/source/repos/OpenVRPerfKit/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCXXInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeCCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeCXXCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeRCCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeSystem.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule F:/Lenny/source/repos/OpenVRPerfKit/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SF:/Lenny/source/repos/OpenVRPerfKit -BF:/Lenny/source/repos/OpenVRPerfKit --check-stamp-file F:/Lenny/source/repos/OpenVRPerfKit/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCXXInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeCCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeCXXCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeRCCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeSystem.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule F:/Lenny/source/repos/OpenVRPerfKit/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SF:/Lenny/source/repos/OpenVRPerfKit -BF:/Lenny/source/repos/OpenVRPerfKit --check-stamp-file F:/Lenny/source/repos/OpenVRPerfKit/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCXXInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeLanguageInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeRCInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Compiler\MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files (x86)\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeCCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeCXXCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeRCCompiler.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\3.27.3\CMakeSystem.cmake;F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">F:\Lenny\source\repos\OpenVRPerfKit\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\Lenny\source\repos\OpenVRPerfKit\ZERO_CHECK.vcxproj">
+      <Project>{45D3FCC5-FF75-3E9F-92F0-89DC605D5FE9}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\minhook\minhook.vcxproj">
+      <Project>{7FC4C5CC-920A-3615-BBDA-974ADEE22F5B}</Project>
+      <Name>minhook</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Lenny\source\repos\OpenVRPerfKit\vrperfkit.vcxproj">
+      <Project>{A518E408-0C28-3665-B3B4-A1228076C35A}</Project>
+      <Name>vrperfkit</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Lenny\source\repos\OpenVRPerfKit\ThirdParty\yaml-cpp\yaml-cpp.vcxproj">
+      <Project>{B6C78533-FFCD-304A-8A78-5AAF00602B3B}</Project>
+      <Name>yaml-cpp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

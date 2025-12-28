@@ -15,9 +15,9 @@ EXPORTS
 	DXGIGetDebugInterface1 PRIVATE
 	DXGIReportAdapterConfiguration PRIVATE
 
-	; exports for d3d11.dll
-	D3D11CreateDevice PRIVATE
-	D3D11CreateDeviceAndSwapChain PRIVATE
+	; exports for d3d12.dll
+	D3D12CreateDevice PRIVATE
+	D3D12CreateDeviceAndSwapChain PRIVATE
 
 	; exports for vrclient.dll
 	VRClientCoreFactory PRIVATE

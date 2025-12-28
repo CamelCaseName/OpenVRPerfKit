@@ -43,7 +43,7 @@ source_group("resources" FILES ${RESOURCE_FILES})
 
 set(PROXY_FILES
 	src/proxy/dxgi.cpp
-	src/proxy/d3d11.cpp
+	src/proxy/d3d12.cpp
 	src/proxy/openvr.cpp
 	src/proxy/proxy_helpers.cpp
 	src/proxy/proxy_helpers.h
@@ -66,33 +66,38 @@ set(OPENVR_FILES
 )
 source_group("openvr" FILES ${OPENVR_FILES})
 
-set(D3D11_FILES
-	src/d3d11/d3d11_helper.h
-	src/d3d11/d3d11_helper.cpp
-	src/d3d11/d3d11_cas_upscaler.h
-	src/d3d11/d3d11_cas_upscaler.cpp
-	src/d3d11/d3d11_fsr_upscaler.h
-	src/d3d11/d3d11_fsr_upscaler.cpp
-	src/d3d11/d3d11_nis_upscaler.h
-	src/d3d11/d3d11_nis_upscaler.cpp
-	src/d3d11/d3d11_post_processor.h
-	src/d3d11/d3d11_post_processor.cpp
-	src/d3d11/d3d11_injector.h
-	src/d3d11/d3d11_injector.cpp
-	src/d3d11/d3d11_variable_rate_shading.h
-	src/d3d11/d3d11_variable_rate_shading.cpp
+set(D3D12_FILES
+	src/d3d12/d3d12_helper.h
+	src/d3d12/d3d12_helper.cpp
+	src/d3d12/d3d12_cas_upscaler.h
+	src/d3d12/d3d12_cas_upscaler.cpp
+	src/d3d12/d3d12_fsr_upscaler.h
+	src/d3d12/d3d12_fsr_upscaler.cpp
+	src/d3d12/d3d12_nis_upscaler.h
+	src/d3d12/d3d12_nis_upscaler.cpp
+	src/d3d12/d3d12_post_processor.h
+	src/d3d12/d3d12_post_processor.cpp
+	src/d3d12/d3d12_injector.h
+	src/d3d12/d3d12_injector.cpp
+	src/d3d12/d3d12_variable_rate_shading.h
+	src/d3d12/d3d12_variable_rate_shading.cpp
 )
-source_group("d3d11" FILES ${D3D11_FILES})
+source_group("d3d12" FILES ${D3D12_FILES})
 
 set(FSR_FILES
-	src/fsr/fsr_easu.hlsl
-	src/fsr/fsr_rcas.hlsl
-	src/fsr/ffx_a.h
-	src/fsr/ffx_fsr1.h
+	src/fsr/ffx_error.h
+	src/fsr/ffx_fsr2.h
+	src/fsr/ffx_fsr2_interface.h
+	src/fsr/ffx_types.h
+	src/fsr/ffx_util.h
+	src/fsr/shaders/ffx_fsr2_common.h
+	src/fsr/shaders/ffx_fsr2_resources.h
+	src/fsr/dx12/ffx_fsr2_dx12.h
+	src/fsr/dx12/shaders/ffx_fsr2_shaders_dx12.h
 )
 source_group("fsr" FILES ${FSR_FILES})
-set_compute_shader(src/fsr/fsr_easu.hlsl "shader_fsr_easu.h" "g_FSRUpscaleShader")
-set_compute_shader(src/fsr/fsr_rcas.hlsl "shader_fsr_rcas.h" "g_FSRSharpenShader")
+# set_compute_shader(src/fsr/fsr_easu.hlsl "shader_fsr_easu.h" "g_FSRUpscaleShader")
+# set_compute_shader(src/fsr/fsr_rcas.hlsl "shader_fsr_rcas.h" "g_FSRSharpenShader")
 
 set(NIS_FILES
 	src/nis/NIS_Common.h
@@ -104,17 +109,6 @@ set(NIS_FILES
 source_group("nis" FILES ${NIS_FILES})
 set_compute_shader(src/nis/NIS_Sharpen.hlsl "shader_nis_sharpen.h" "g_NISSharpenShader")
 set_compute_shader(src/nis/NIS_Upscale.hlsl "shader_nis_upscale.h" "g_NISUpscaleShader")
-
-set(CAS_FILES
-	src/cas/cas.compute.h
-	src/cas/cas.sharpen.hlsl
-	src/cas/cas.upscale.hlsl
-	src/cas/ffx_a.h
-	src/cas/ffx_cas.h
-)
-source_group("cas" FILES ${CAS_FILES})
-set_compute_shader(src/cas/cas.sharpen.hlsl "shader_cas_sharpen.h" "g_CASSharpenShader")
-set_compute_shader(src/cas/cas.upscale.hlsl "shader_cas_upscale.h" "g_CASUpscaleShader")
 
 set(HRM_FILES
 	src/hrm/hidden_radial_mask.hlsl
@@ -145,10 +139,9 @@ set(PROJECT_FILES
 	${PROXY_FILES}
 	${OCULUS_FILES}
 	${OPENVR_FILES}
-	${D3D11_FILES}
+	${D3D12_FILES}
 	${FSR_FILES}
 	${NIS_FILES}
-	${CAS_FILES}
 	${HRM_FILES}
 	${MAIN_FILES}
 )

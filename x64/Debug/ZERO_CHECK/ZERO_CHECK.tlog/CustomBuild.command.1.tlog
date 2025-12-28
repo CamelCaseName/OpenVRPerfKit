@@ -1,0 +1,10 @@
+^F:\LENNY\SOURCE\REPOS\OPENVRPERFKIT\CMAKEFILES\810BA979C5ACDCDB53E7B13FBE9CAEF0\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SF:/Lenny/source/repos/OpenVRPerfKit -BF:/Lenny/source/repos/OpenVRPerfKit --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file F:/Lenny/source/repos/OpenVRPerfKit/VRPerfKit.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

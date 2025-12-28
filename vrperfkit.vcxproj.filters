@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\proxy\dxgi.cpp">
+      <Filter>proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\proxy\d3d12.cpp">
+      <Filter>proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\proxy\openvr.cpp">
+      <Filter>proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\proxy\proxy_helpers.cpp">
+      <Filter>proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\oculus\oculus_hooks.cpp">
+      <Filter>oculus</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\oculus\oculus_manager.cpp">
+      <Filter>oculus</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\openvr\openvr_hooks.cpp">
+      <Filter>openvr</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\openvr\openvr_manager.cpp">
+      <Filter>openvr</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_helper.cpp">
+      <Filter>d3d12</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_cas_upscaler.cpp">
+      <Filter>d3d12</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_fsr_upscaler.cpp">
+      <Filter>d3d12</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_nis_upscaler.cpp">
+      <Filter>d3d12</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_post_processor.cpp">
+      <Filter>d3d12</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_injector.cpp">
+      <Filter>d3d12</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_variable_rate_shading.cpp">
+      <Filter>d3d12</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\config.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\dllmain.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\hotkeys.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\hooks.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\logging.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\proxy\proxy_helpers.h">
+      <Filter>proxy</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\oculus\oculus_hooks.h">
+      <Filter>oculus</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\oculus\oculus_manager.h">
+      <Filter>oculus</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\openvr\openvr_hooks.h">
+      <Filter>openvr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\openvr\openvr_manager.h">
+      <Filter>openvr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_helper.h">
+      <Filter>d3d12</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_cas_upscaler.h">
+      <Filter>d3d12</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_fsr_upscaler.h">
+      <Filter>d3d12</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_nis_upscaler.h">
+      <Filter>d3d12</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_post_processor.h">
+      <Filter>d3d12</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_injector.h">
+      <Filter>d3d12</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\d3d12\d3d12_variable_rate_shading.h">
+      <Filter>d3d12</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\ffx_error.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\ffx_fsr2.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\ffx_fsr2_interface.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\ffx_types.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\ffx_util.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\shaders\ffx_fsr2_common.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\shaders\ffx_fsr2_resources.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\dx12\ffx_fsr2_dx12.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\fsr\dx12\shaders\ffx_fsr2_shaders_dx12.h">
+      <Filter>fsr</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\nis\NIS_Common.h">
+      <Filter>nis</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\nis\NIS_Config.h">
+      <Filter>nis</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\nis\NIS_Scaler.h">
+      <Filter>nis</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\config.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\hotkeys.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\hooks.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\logging.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\resolution_scaling.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\types.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Lenny\source\repos\OpenVRPerfKit\src\win_header_sane.h">
+      <Filter>core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Lenny\source\repos\OpenVRPerfKit\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <FXCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\nis\NIS_Sharpen.hlsl">
+      <Filter>nis</Filter>
+    </FXCompile>
+    <FXCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\nis\NIS_Upscale.hlsl">
+      <Filter>nis</Filter>
+    </FXCompile>
+    <FXCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\hrm\hidden_radial_mask.hlsl">
+      <Filter>hrm</Filter>
+    </FXCompile>
+    <FXCompile Include="F:\Lenny\source\repos\OpenVRPerfKit\src\hrm\fullscreen_tri.vert.hlsl">
+      <Filter>hrm</Filter>
+    </FXCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="F:\Lenny\source\repos\OpenVRPerfKit\resources\exports.def">
+      <Filter>resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{F76D88B6-B3E7-3F06-9628-12FFB086177C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d12">
+      <UniqueIdentifier>{376774F3-82CE-363C-8862-4513302B854B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fsr">
+      <UniqueIdentifier>{E9EDC247-98A1-3971-816D-419EA7A8A979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hrm">
+      <UniqueIdentifier>{7E91449B-441E-3F42-B3F7-ADE3EAAB069F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nis">
+      <UniqueIdentifier>{EC660876-9A50-32BB-9A39-9350A5C41C5D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="oculus">
+      <UniqueIdentifier>{991391D3-0555-36BD-A562-98462A8593F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="openvr">
+      <UniqueIdentifier>{26DC7858-7029-330C-9434-3662A0204C2A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="proxy">
+      <UniqueIdentifier>{CC823BF9-326D-3B84-B967-ACBB451205EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{530089E2-74E8-3A93-986B-8037D71D91BB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

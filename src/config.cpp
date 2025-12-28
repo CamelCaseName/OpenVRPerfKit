@@ -127,7 +127,7 @@ namespace vrperfkit {
 			DxvkConfig &dxvk = g_config.dxvk;
 			dxvk.enabled = dxvkCfg["enabled"].as<bool>(dxvk.enabled);
 			dxvk.dxgiDllPath = dxvkCfg["dxgiDllPath"].as<std::string>(dxvk.dxgiDllPath);
-			dxvk.d3d11DllPath = dxvkCfg["d3d11DllPath"].as<std::string>(dxvk.d3d11DllPath);
+			dxvk.d3d12DllPath = dxvkCfg["d3d12DllPath"].as<std::string>(dxvk.d3d12DllPath);
 
 			YAML::Node ffrCfg = cfg["fixedFoveated"];
 			FixedFoveatedConfig &ffr = g_config.ffr;

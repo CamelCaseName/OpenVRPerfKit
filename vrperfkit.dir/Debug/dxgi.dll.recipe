@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\x64\Debug\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\dxgi.dll</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\fsr_easu.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\fsr_rcas.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\NIS_Sharpen.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\NIS_Upscale.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\cas.sharpen.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\cas.upscale.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\hidden_radial_mask.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>F:\Lenny\source\repos\OpenVRPerfKit\Debug\fullscreen_tri.vert.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

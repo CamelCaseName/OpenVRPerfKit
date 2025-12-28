@@ -21,7 +21,7 @@ namespace vrperfkit {
 		return GetModuleFileNameW(module, buf, ARRAYSIZE(buf)) ? buf : fs::path();
 	}
 
-	void InstallD3D11Hooks();
+	void InstallD3D12Hooks();
 	void InstallDXGIHooks();
 }
 
@@ -32,7 +32,7 @@ namespace {
 		std::lock_guard<std::mutex> lock (g_hookInstallMutex);
 		vrperfkit::InstallOpenVrHooks();
 		vrperfkit::InstallOculusHooks();
-		vrperfkit::InstallD3D11Hooks();
+		vrperfkit::InstallD3D12Hooks();
 		vrperfkit::InstallDXGIHooks();
 	}
 
@@ -86,13 +86,13 @@ namespace {
 		vrperfkit::g_basePath = vrperfkit::g_dllPath.parent_path();
 		vrperfkit::g_executablePath = vrperfkit::GetModulePath(nullptr);
 
-		vrperfkit::OpenLogFile(vrperfkit::g_basePath / "vrperfkit_RSF.log");
+		vrperfkit::OpenLogFile(vrperfkit::g_basePath / "OpenVRPerfKit.log");
 		LOG_INFO << "===============================";
-		LOG_INFO << "VR Performance Toolkit RSF v3.2";
+		LOG_INFO << "      OpenVR PerfKit v4        ";
 		LOG_INFO << "===============================\n";
 
-		vrperfkit::LoadConfig(vrperfkit::g_basePath / "vrperfkit_RSF.yml");
-		vrperfkit::LoadHotkeys(vrperfkit::g_basePath / "vrperfkit_RSF.yml");
+		vrperfkit::LoadConfig(vrperfkit::g_basePath / "OpenVRPerfKit.yml");
+		vrperfkit::LoadHotkeys(vrperfkit::g_basePath / "OpenVRPerfKit.yml");
 		vrperfkit::PrintCurrentConfig();
 		vrperfkit::PrintHotkeys();
 

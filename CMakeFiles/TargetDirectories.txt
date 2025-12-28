@@ -1,0 +1,10 @@
+F:/Lenny/source/repos/OpenVRPerfKit/CMakeFiles/vrperfkit.dir
+F:/Lenny/source/repos/OpenVRPerfKit/CMakeFiles/INSTALL.dir
+F:/Lenny/source/repos/OpenVRPerfKit/CMakeFiles/ALL_BUILD.dir
+F:/Lenny/source/repos/OpenVRPerfKit/CMakeFiles/ZERO_CHECK.dir
+F:/Lenny/source/repos/OpenVRPerfKit/ThirdParty/minhook/CMakeFiles/minhook.dir
+F:/Lenny/source/repos/OpenVRPerfKit/ThirdParty/minhook/CMakeFiles/INSTALL.dir
+F:/Lenny/source/repos/OpenVRPerfKit/ThirdParty/minhook/CMakeFiles/ALL_BUILD.dir
+F:/Lenny/source/repos/OpenVRPerfKit/ThirdParty/yaml-cpp/CMakeFiles/yaml-cpp.dir
+F:/Lenny/source/repos/OpenVRPerfKit/ThirdParty/yaml-cpp/CMakeFiles/INSTALL.dir
+F:/Lenny/source/repos/OpenVRPerfKit/ThirdParty/yaml-cpp/CMakeFiles/ALL_BUILD.dir

@@ -12,7 +12,7 @@ namespace vrperfkit {
 		vr::EVRSubmitFlags submitFlags;
 	};
 
-	struct OpenVrD3D11Resources;
+	struct OpenVrD3D12Resources;
 	struct OpenVrDxvkResources;
 
 	class OpenVrManager {
@@ -40,18 +40,18 @@ namespace vrperfkit {
 		vr::VRTextureBounds_t outputBounds;
 		std::unique_ptr<vr::Texture_t> outputTexInfo;
 
-		std::unique_ptr<OpenVrD3D11Resources> d3d11Res;
+		std::unique_ptr<OpenVrD3D12Resources> d3d12Res;
 		std::unique_ptr<OpenVrDxvkResources> dxvkRes;
 
 		void EnsureInit(const OpenVrSubmitInfo &info);
-		void InitD3D11(const OpenVrSubmitInfo &info);
+		void InitD3D12(const OpenVrSubmitInfo &info);
 
 		void InitDxvk(const OpenVrSubmitInfo &info);
 
 		void CalculateProjectionCenters();
 		void CalculateEyeTextureAspectRatio();
 
-		void PostProcessD3D11(OpenVrSubmitInfo &info);
+		void PostProcessD3D12(OpenVrSubmitInfo &info);
 		void PatchDxvkSubmit(OpenVrSubmitInfo & info);
 
 		void PrepareOutputTexInfo(const vr::Texture_t *input, vr::EVRSubmitFlags submitFlags);

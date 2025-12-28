@@ -5,7 +5,7 @@
 #include <memory>
 
 namespace vrperfkit {
-	struct OculusD3D11Resources;
+	struct OculusD3D12Resources;
 
 	class OculusManager {
 	public:
@@ -25,10 +25,10 @@ namespace vrperfkit {
 
 		ProjectionCenters CalculateProjectionCenter(const ovrFovPort *fov);
 
-		std::unique_ptr<OculusD3D11Resources> d3d11Res;
-		void InitD3D11();
+		std::unique_ptr<OculusD3D12Resources> d3d12Res;
+		void InitD3D12();
 
-		void PostProcessD3D11(ovrLayerEyeFovDepth &eyeLayer);
+		void PostProcessD3D12(ovrLayerEyeFovDepth &eyeLayer);
 	};
 
 	extern OculusManager g_oculus;
